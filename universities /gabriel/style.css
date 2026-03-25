@@ -1,7 +1,6 @@
 *{
     height:100px;
     weight:100px;
-    margin:0;
 }
 
 /* GABO*/
@@ -40,10 +39,7 @@ justify-content: bottom;
 padding: 1rem;
 }
 p{
-    text-align: center;
+    justify-content: bottom;
     font-size: 40px;
-    
-
 }
-
 
