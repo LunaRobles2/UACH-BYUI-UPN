@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 7.5</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="header1">Búsqueda del Tesoro</div>
+    </header>
+
+    <main>
+        <div class="pista">
+            <img src="https://imgs.search.brave.com/1Z-chyRci9z7n6BgUiP-Kc-Pd_dqsW47UVO4DAGCu4g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wbmcu/cG5ndHJlZS5jb20v/cG5nLXZlY3Rvci8y/MDI2MDQxMC9vdXJt/aWQvcG5ndHJlZS10/cmVhc3VyZS1jaGVz/dC1vdmVyZmxvdy13/aXRoLWdvbGQtY29p/bnMtcG5nLWltYWdl/XzE5MDkwNzkxLndl/YnA">
+        </div>
+
+        <div class="form-pista">
+            <div class="riddle" id="riddle"></div>
+            <input type="text" id="answer" placeholder="Escribe tu respuesta..." autocomplete="off">
+            <button onclick="comprobar()">Comprobar</button>
+            <p id="feedback"></p>
+        </div>
+    </main>
+
+    <script>
+        const acertijos = [
+            {
+                pregunta: "¿Cuántos meses tienen 28 días?",
+                respuesta: "12",
+                img: "images/pista1.png"
+            },
+            {
+                pregunta: "¿Qué está en el centro de París?",
+                respuesta: "r",
+                img: "images/pista2.png"
+            },
+            {
+                pregunta: "¿Qué se repite una vez cada minuto, dos veces cada momento y nunca en cien años?",
+                respuesta: "m",
+                img: "images/pista3.png"
+            },
+            {
+                pregunta: "Si me nombras desaparezco, ¿qué soy?",
+                respuesta: "el silencio",
+                img: "images/pista4.png"
+            },
+            {
+                pregunta: "Hay 10 peces en una pecera. 2 se ahogan. 4 nadan lejos. 3 mueren, ¿cuántos peces quedan en la pecera?",
+                respuesta: "10",
+                img: "images/pista5.png"
+            },
+            {
+                pregunta: "Si un caballo blanco entra al mar negro, ¿cómo sale?",
+                respuesta: "mojado",
+                img: "images/pista6.png"
+            },
+            {
+                pregunta: "Hay una casa de un piso donde todo es amarillo. Paredes amarillas, puertas amarillas, muebles amarillos. ¿De qué color son las escaleras?",
+                respuesta: "no hay escaleras",
+                img: "images/pista7.png"
+            }
+        ];
+
+        let actual = 0;
+
+        function mostrarAcertijo() {
+            document.getElementById("riddle").textContent = acertijos[actual].pregunta;
+            document.querySelector(".pista-img").src = acertijos[actual].img;
+            document.getElementById("answer").value = "";
+            document.getElementById("feedback").textContent = "";
+            document.getElementById("answer").focus();
+        }
+
+        function comprobar() {
+            const input = document.getElementById("answer");
+            const fb = document.getElementById("feedback");
+            const val = input.value.trim().toLowerCase();
+
+            if (val === acertijos[actual].respuesta) {
+                fb.textContent = "✅ ¡Correcto!";
+                fb.style.color = "#4ecca3";
+                actual++;
+                setTimeout(() => {
+                    if (actual < acertijos.length) {
+                        mostrarAcertijo();
+                    } else {
+                        document.getElementById("riddle").textContent = "🎉 ¡Encontraste el tesoro!";
+                        input.disabled = true;
+                        document.querySelector("button").disabled = true;
+                        document.querySelector(".pista-img").src = "images/tesoro_encontrado.png";
+                    }
+                }, 1200);
+            } else {
+                fb.textContent = "❌ Respuesta incorrecta, intenta de nuevo";
+                fb.style.color = "#e94560";
+            }
+        }
+
+        document.getElementById("answer").addEventListener("keydown", e => {
+            if (e.key === "Enter") comprobar();
+        });
+
+        mostrarAcertijo();
+    </script>
+</body>
+</html>

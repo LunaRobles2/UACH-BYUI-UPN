@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #d5be8b;
+    color: #333;
+    min-height: 100vh;
+}
+
+img {
+    height: 250px;
+    width: auto;
+    border-radius: 8px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    margin-bottom: 0;
+    z-index: 99999;
+    height: 100px;
+    text-align: center;
+    color: #ffffff;
+}
+
+#header1 {
+    font-size: 60px;
+    background-color: #699110;
+    line-height: 100px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.form-pista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+}
+
+.riddle {
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1.5;
+}
+
+input {
+    font-size: 1.4rem;
+    padding: 0.6rem 1rem;
+    border: 2px solid #699110;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 400px;
+}
+
+button {
+    font-size: 1.4rem;
+    padding: 0.6rem 1.5rem;
+    background-color: #699110;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#feedback {
+    font-size: 1.4rem;
+}
